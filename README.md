@@ -3,7 +3,7 @@
 Please download WT2G corpus file through the [link](https://drive.google.com/file/d/1EcWOzoftB1BXSntAlJlLC-2I6KY3AgyJ/view)  
 
 ### File Tree
-<img src="img/file_tree.png" alt="file_tree" width="350"/>
+<img src="img/file_tree.png" alt="file_tree" width="300"/>
 
 ### Part1: Language Model (40 queries)
 We have 3 ranking function:  
