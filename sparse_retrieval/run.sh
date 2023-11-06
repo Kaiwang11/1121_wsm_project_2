@@ -16,9 +16,6 @@ python codes/convert_wt2g_to_jsonl.py
 ##########################################################
 # Then, search and store result in the trec_eval format. #
 ##########################################################
-# python codes/main.py --method bm25 --output runs/bm25.run
-# python codes/main.py --method dir --output runs/dir.run
-# python codes/main.py --method jm --output runs/jm.run
 python codes/main.py --query ../data/topics.401-440.txt --method bm25 --output runs/bm25_40.run
 python codes/main.py --query ../data/topics.401-440.txt --method dir --output runs/dir_40.run
 python codes/main.py --query ../data/topics.401-440.txt --method jm --output runs/jm_40.run

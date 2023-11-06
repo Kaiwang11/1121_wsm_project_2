@@ -15,7 +15,7 @@ def search(searcher, query, args):
 
 
 '''
-## search methods for debug
+### searching methods for debug
 
 def bm25_search(args):
     searcher = LuceneSearcher(args.index)
@@ -59,19 +59,6 @@ def my_qld_search(args):
     
     print()
     print('My Dirichlet(mu=1000) Smoothing Search Results:')
-    for i in range(len(hits)):
-        print(f'{i+1:2} {hits[i].docid:12} {hits[i].score:.6f}')
-
-def my_qll_search(args):
-    searcher = LuceneSearcher(args.index)
-
-    # Make sure mu won't work here
-    # searcher.set_my_qll(mu=1)
-    searcher.set_my_qll(mu=19)
-    hits = searcher.search(args.query, args.k)
-    
-    print()
-    print('My Laplace Smoothing Search Results:')
     for i in range(len(hits)):
         print(f'{i+1:2} {hits[i].docid:12} {hits[i].score:.6f}')
 
