@@ -19,6 +19,6 @@ Use part1 results to train a ML model, then test on new 10 queries.
 Example: please refer to sparse_retrieval/codes/random_forest.py
 
 ### Usage
-'''bash
+```bash
 ./run.sh
-'''
+```
