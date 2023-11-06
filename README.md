@@ -19,6 +19,8 @@ Use part1 results to train a ML model, then test on new 10 queries.
 Example: please refer to sparse_retrieval/codes/random_forest.py
 
 ### Usage
+After download WT2G corpus and modify _searcher.py:  
+
 ```bash
 ./run.sh
 ```
