@@ -11,7 +11,21 @@ We have 3 ranking function:
 2. dirichlet smoothing
 3. jelinek-mercer smoothing
 
-To achieve these methods through pyserini, you have to modify [pyserini/search/lucene/_searcher.py](https://github.com/castorini/pyserini/blob/master/pyserini/search/lucene/_searcher.py):  
+To achieve these methods through pyserini, you have to modify [pyserini/search/lucene/_searcher.py](https://github.com/castorini/pyserini/blob/master/pyserini/search/lucene/_searcher.py).  
+Add the following function:  
+```python
+    def set_qljm(self, jm_lambda=float(0.5)):
+        """Configure query likelihood with Jelinek-Mercer smoothing as the scoring function.
+        
+        Parameters
+        ----------
+        jm_lambda: float
+            Jeliek-Mercer smoothing parameter lambda.
+        """
+        LMJMSimilarity = autoclass('org.apache.lucene.search.similarities.LMJelinekMercerSimilarity')(float(jm_lambda))
+        self.object.searcher = autoclass('org.apache.lucene.search.IndexSearcher')(self.object.reader)
+        self.object.searcher.setSimilarity(LMJMSimilarity)
+```
 ![image info](img/qljm.png)
 
 ### Part2: Learning to Rank
