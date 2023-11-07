@@ -22,5 +22,6 @@ Example: please refer to sparse_retrieval/codes/random_forest.py
 After download WT2G corpus and modify _searcher.py:  
 
 ```bash
+cd sparse_retrieval/
 ./run.sh
 ```
