@@ -33,7 +33,7 @@ Use part1 results to train a ML model, then test on new 10 queries.
 Example: please refer to sparse_retrieval/codes/random_forest.py
 
 ### Usage
-After download WT2G corpus and modify _searcher.py:  
+After download WT2G corpus and modify [pyserini/search/lucene/_searcher.py](https://github.com/castorini/pyserini/blob/master/pyserini/search/lucene/_searcher.py):  
 
 ```bash
 cd sparse_retrieval/
