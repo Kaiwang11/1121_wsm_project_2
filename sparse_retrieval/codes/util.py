@@ -1,5 +1,27 @@
 import re
 import pandas as pd
+from pyserini.pyclass import autoclass
+from pyserini.search.lucene import LuceneSearcher
+
+
+class JMSearcher(LuceneSearcher):
+
+    def __init__(self, index):
+        super().__init__(index)
+
+    def set_qljm(self, jm_lambda=float(0.5)):
+        """Configure query likelihood with Jelinek-Mercer smoothing as the scoring function.
+
+        Parameters
+        ----------
+        jm_lambda: float
+            Jeliek-Mercer smoothing parameter lambda.
+        """
+        LMJMSimilarity = autoclass('org.apache.lucene.search.similarities.LMJelinekMercerSimilarity')(float(jm_lambda))
+        self.object.searcher = autoclass('org.apache.lucene.search.IndexSearcher')(self.object.reader)
+        self.object.searcher.setSimilarity(LMJMSimilarity)
+        
+
 
 
 def read_title(query_path):
