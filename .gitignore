@@ -1,0 +1,7 @@
+data/*
+.hypothesis/*
+img/*
+.DS_Store
+indexes/*
+runs/*
+__pycache__/

@@ -1,6 +1,9 @@
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
+import numpy as np
 
+import xgboost as xgb
 from util import read_run, read_qrels
 
 
@@ -39,9 +42,11 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 
-# Create and train the classifier
-classifier = RandomForestClassifier()
+classifier = xgb.XGBRanker(tree_method="hist", lambdarank_num_pair_per_sample=8, objective="rank:ndcg", lambdarank_pair_method="topk")
 classifier.fit(X_train, y_train)
+# Create and train the classifier
+# classifier = RandomForestClassifier()
+# classifier.fit(X_train, y_train)
 
 
 # Predictions

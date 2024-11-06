@@ -1,18 +1,25 @@
-./clean.sh
+# ./clean.sh
 
 
 ###########################################################################
 # We first convert WT2G files into the jsonl format required by pyserini. #
 ###########################################################################
-python codes/convert_wt2g_to_jsonl.py
+if test -e "./data/collection/collection.jsonl"; then
+        echo "already transformed"
+else
+        python codes/convert_wt2g_to_jsonl.py
+fi
 
 
 ##################################################################
 # Secondly, we can build index for our WT2G corpus(247491 docs). #
 ##################################################################
-./codes/build_index.sh
+if test -e "./indexes/collection/"; then
+        echo "indexed"
+else
+        ./codes/build_index.sh
 
-
+fi
 ##########################################################
 # Then, search and store result in the trec_eval format. #
 ##########################################################
@@ -44,6 +51,7 @@ echo "Direchlet Smoothing result on 10 queries"
 perl trec_eval.pl ../data/qrels.441-450.txt runs/dir_10.run
 echo "Jelinek-Merver Smoothing result on 10 quries"
 perl trec_eval.pl ../data/qrels.441-450.txt runs/jm_10.run
-echo "Learning to Rank result (random_forest)"
+echo "Learning to Rank result"
+
 python codes/random_forest.py
 perl trec_eval.pl ../data/qrels.441-450.txt runs/random_forest_10.run
